@@ -2,11 +2,11 @@
 
 ## Anggota Kelompok
 
- Azizah Az-Zahra (M0403241048)
- Mirabel Nasywa Rajendraputri (M0403241067)
- Muhammad Riady Hendrawan (M0403241103)
- Muhammad Fauzan Rizvi (M0403241142)
- Dini Aulia Wulandari (M0403241143)
+ Azizah Az-Zahra (M0403241048),
+ Mirabel Nasywa Rajendraputri (M0403241067),
+ Muhammad Riady Hendrawan (M0403241103),
+ Muhammad Fauzan Rizvi (M0403241142),
+ Dini Aulia Wulandari (M0403241143),
 
 ## Deskripsi
 
