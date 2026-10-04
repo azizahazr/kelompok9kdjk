@@ -42,7 +42,7 @@ Aplikasi yang dipilih adalah **Linkding**, yaitu aplikasi web self-hosted untuk 
 
 Linkding adalah aplikasi web self-hosted yang digunakan untuk mengelola bookmark atau URL secara mandiri. Aplikasi ini memiliki pendekatan yang sederhana dan berfokus pada penyimpanan serta pengorganisasian bookmark.
 
-Linkding dapat digunakan untuk menyimpan bookmark dan mengelompokkannya menggunakan tag. Aplikasi ini juga menyediakan fitur pencarian bookmark, notes, import dan export bookmark, REST API, serta dukungan multi-user. Linkding dirancang untuk dijalankan menggunakan container seperti Docker dan menggunakan SQLite sebagai database secara default. :contentReference[oaicite:2]{index=2}
+Linkding dapat digunakan untuk menyimpan bookmark dan mengelompokkannya menggunakan tag. Aplikasi ini juga menyediakan fitur pencarian bookmark, notes, import dan export bookmark, REST API, serta dukungan multi-user. Linkding dirancang untuk dijalankan menggunakan container seperti Docker dan menggunakan SQLite sebagai database secara default.
 
 Pada project ini, Linkding diinstal pada VM lokal menggunakan Docker dan Docker Compose.
 
@@ -242,7 +242,7 @@ Pada instalasi ini digunakan konfigurasi Docker dengan port:
 
 Port tersebut dipetakan ke port `9090` pada container Linkding.
 
-Linkding menggunakan SQLite sebagai database default dan data aplikasi disimpan pada direktori data yang dipetakan ke container. :contentReference[oaicite:3]{index=3}
+Linkding menggunakan SQLite sebagai database default dan data aplikasi disimpan pada direktori data yang dipetakan ke container.
 
 Tidak digunakan domain atau reverse proxy karena aplikasi dijalankan untuk kebutuhan pengujian pada VM lokal.
 
@@ -351,7 +351,7 @@ Fungsi yang dapat digunakan pada Linkding antara lain:
 - Import dan export bookmark
 - Mengakses bookmark melalui API
 
-Linkding menyediakan REST API yang dapat digunakan oleh aplikasi pihak ketiga untuk mengelola bookmark. :contentReference[oaicite:4]{index=4}
+Linkding menyediakan REST API yang dapat digunakan oleh aplikasi pihak ketiga untuk mengelola bookmark.
 
 # Pembahasan
 
@@ -365,7 +365,7 @@ Berdasarkan hasil instalasi dan penggunaan, Linkding memiliki beberapa kelebihan
 - Mendukung import dan export bookmark.
 - Menyediakan REST API.
 - Dapat dijalankan secara self-hosted.
-- Menggunakan SQLite sebagai database default sehingga konfigurasi awal relatif sederhana. :contentReference[oaicite:5]{index=5}
+- Menggunakan SQLite sebagai database default sehingga konfigurasi awal relatif sederhana.
 
 ## Kekurangan
 
@@ -379,7 +379,7 @@ Beberapa kekurangan yang ditemukan:
 
 Linkding dibandingkan dengan **Linkwarden**, yaitu aplikasi bookmark manager self-hosted yang juga berfokus pada pengelolaan dan penyimpanan link.
 
-Linkding memiliki pendekatan yang lebih sederhana dan minimal untuk mengelola bookmark. Sementara itu, Linkwarden menyediakan fitur yang lebih berorientasi pada preservation dan kolaborasi. Linkwarden menggunakan konsep link, collection, dan tags, serta dapat menyimpan salinan halaman dalam bentuk screenshot dan PDF. Linkwarden juga menyediakan fitur pembacaan dan anotasi serta kolaborasi pada collection. :contentReference[oaicite:6]{index=6}
+Linkding memiliki pendekatan yang lebih sederhana dan minimal untuk mengelola bookmark. Sementara itu, Linkwarden menyediakan fitur yang lebih berorientasi pada preservation dan kolaborasi. Linkwarden menggunakan konsep link, collection, dan tags, serta dapat menyimpan salinan halaman dalam bentuk screenshot dan PDF. Linkwarden juga menyediakan fitur pembacaan dan anotasi serta kolaborasi pada collection.
 
 Perbandingan:
 
@@ -395,7 +395,7 @@ Perbandingan:
 | REST API | Ya | Ya |
 | Kompleksitas | Relatif sederhana | Lebih kompleks |
 
-Berdasarkan perbandingan tersebut, Linkding lebih sesuai untuk pengguna yang membutuhkan pengelolaan bookmark secara sederhana dan ringan. Linkwarden lebih sesuai untuk kebutuhan pengarsipan halaman web dan kolaborasi yang lebih luas. :contentReference[oaicite:7]{index=7}
+Berdasarkan perbandingan tersebut, Linkding lebih sesuai untuk pengguna yang membutuhkan pengelolaan bookmark secara sederhana dan ringan. Linkwarden lebih sesuai untuk kebutuhan pengarsipan halaman web dan kolaborasi yang lebih luas.
 
 # Referensi
 
