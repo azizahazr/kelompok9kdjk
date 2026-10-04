@@ -33,11 +33,15 @@ Hal ini menunjukkan bahwa Docker berhasil berjalan pada VM.
 
 ### Mengecek Versi Docker
 
+Perintah:
+
 ```bash
 docker --version
 ```
 
 ### Mengecek Docker Compose
+
+Perintah:
 
 ```bash
 docker compose version
@@ -47,18 +51,28 @@ docker compose version
 
 ### 3.1 Membuat Direktori
 
+Perintah:
+
 ```bash
 mkdir -p ~/linkding
 cd ~/linkding
 ```
 
+Direktori `linkding` digunakan sebagai tempat penyimpanan file konfigurasi Linkding.
+
 ### 3.2 Mengunduh Docker Compose
+
+Perintah:
 
 ```bash
 wget https://raw.githubusercontent.com/sissbruecker/linkding/master/docker-compose.yml
 ```
 
+File `docker-compose.yml` berhasil diunduh.
+
 ### 3.3 Mengunduh File Environment
+
+Perintah:
 
 ```bash
 wget https://raw.githubusercontent.com/sissbruecker/linkding/master/.env.sample
@@ -70,7 +84,7 @@ Kemudian membuat file `.env`:
 cp .env.sample .env
 ```
 
-Struktur file:
+Struktur file menjadi:
 
 ```text
 linkding/
@@ -97,22 +111,31 @@ Container linkding Started
 
 ### 3.5 Mengecek Container
 
+Perintah:
+
 ```bash
 sudo docker ps
 ```
 
-Hasil:
+Hasil menunjukkan bahwa container Linkding berjalan dengan status:
 
 ```text
 STATUS: Up (healthy)
 PORTS: 0.0.0.0:9090->9090/tcp
 NAMES: linkding
 ```
-```markdown
-![Container Linkding Berjalan](images/03-linkding-container.png)
+
 Hal ini menunjukkan bahwa container Linkding berhasil berjalan.
 
+![Container Linkding Berjalan](images/03-linkding-container.png)
+
 ## 4. Akses Linkding
+
+IP VM yang digunakan saat pengujian adalah:
+
+```text
+172.17.77.48
+```
 
 Linkding diakses melalui browser menggunakan alamat:
 
@@ -122,6 +145,8 @@ http://172.17.77.48:9090
 
 Aplikasi berhasil dibuka melalui browser.
 
+![Dashboard Linkding](images/04-linkding-dashboard.png)
+
 ## 5. Login
 
 Akun pengguna dibuat menggunakan perintah:
@@ -130,7 +155,9 @@ Akun pengguna dibuat menggunakan perintah:
 sudo docker compose exec linkding python manage.py createsuperuser
 ```
 
-Setelah akun dibuat, pengguna dapat login ke aplikasi Linkding.
+Kemudian dilakukan pengisian username, email, dan password.
+
+Setelah akun berhasil dibuat, pengguna dapat login ke aplikasi Linkding.
 
 ## 6. Pengisian Konten
 
@@ -143,6 +170,8 @@ Bookmark yang ditambahkan:
 - Tag: referensi
 
 Bookmark berhasil muncul pada halaman **Bookmarks**.
+
+![Daftar Bookmark Linkding](images/05-linkding-bookmarks.png)
 
 ## 7. Hasil Instalasi
 
@@ -177,3 +206,7 @@ sudo docker compose up -d
 ```
 
 Setelah menggunakan `sudo`, Linkding berhasil dijalankan.
+
+## 9. Kesimpulan
+
+Berdasarkan proses instalasi dan pengujian yang telah dilakukan, aplikasi Linkding berhasil dijalankan pada VM lokal menggunakan Docker. Aplikasi dapat diakses melalui web browser, pengguna dapat melakukan login, serta fitur penambahan bookmark dan tag dapat digunakan.
