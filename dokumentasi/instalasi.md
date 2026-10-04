@@ -2,52 +2,177 @@
 
 ## 1. Persiapan
 
-Aplikasi Linkding akan diinstal pada VM lokal.
+Linkding diinstal pada VM lokal menggunakan Docker.
 
 ### Spesifikasi VM
 
-- Sistem Operasi:
-- RAM:
-- CPU:
-- Storage:
-- IP Address:
+- Sistem Operasi: Ubuntu
+- Username: asus
+- IP Address: 172.17.77.48
+- Port Linkding: 9090
 
-## 2. Persiapan Docker
+## 2. Instalasi Docker
 
-Docker digunakan sebagai environment untuk menjalankan aplikasi Linkding.
+Docker digunakan untuk menjalankan aplikasi Linkding.
 
-### Langkah Instalasi Docker
+### Mengecek Status Docker
 
-Akan didokumentasikan setelah proses instalasi dilakukan.
+Perintah:
+
+```bash
+sudo systemctl status docker
+```
+
+Hasil:
+
+```text
+Active: active (running)
+```
+
+Hal ini menunjukkan bahwa Docker berhasil berjalan pada VM.
+
+### Mengecek Versi Docker
+
+```bash
+docker --version
+```
+
+### Mengecek Docker Compose
+
+```bash
+docker compose version
+```
 
 ## 3. Instalasi Linkding
 
-### Langkah 1 - Menyiapkan direktori
+### 3.1 Membuat Direktori
 
-Akan didokumentasikan setelah proses instalasi dilakukan.
+```bash
+mkdir -p ~/linkding
+cd ~/linkding
+```
 
-### Langkah 2 - Menjalankan container
+### 3.2 Mengunduh Docker Compose
 
-Akan didokumentasikan setelah proses instalasi dilakukan.
+```bash
+wget https://raw.githubusercontent.com/sissbruecker/linkding/master/docker-compose.yml
+```
 
-### Langkah 3 - Mengecek container
+### 3.3 Mengunduh File Environment
 
-Akan didokumentasikan setelah proses instalasi dilakukan.
+```bash
+wget https://raw.githubusercontent.com/sissbruecker/linkding/master/.env.sample
+```
 
-## 4. Konfigurasi
+Kemudian membuat file `.env`:
 
-Konfigurasi awal Linkding akan didokumentasikan setelah aplikasi berhasil dijalankan.
+```bash
+cp .env.sample .env
+```
 
-## 5. Akses Aplikasi
+Struktur file:
 
-Linkding akan diakses melalui web browser menggunakan alamat IP VM dan port yang digunakan.
+```text
+linkding/
+├── .env
+├── .env.sample
+└── docker-compose.yml
+```
 
-## 6. Hasil Instalasi
+### 3.4 Menjalankan Linkding
 
-Bagian ini akan berisi screenshot:
+Linkding dijalankan menggunakan Docker Compose:
 
-1. Tampilan VM.
-2. Instalasi Docker.
-3. Container Linkding berjalan.
-4. Halaman login Linkding.
-5. Dashboard Linkding.
+```bash
+sudo docker compose up -d
+```
+
+Hasil:
+
+```text
+Image sissbruecker/linkding:latest Pulled
+Network linkding_default Created
+Container linkding Started
+```
+
+### 3.5 Mengecek Container
+
+```bash
+sudo docker ps
+```
+
+Hasil:
+
+```text
+STATUS: Up (healthy)
+PORTS: 0.0.0.0:9090->9090/tcp
+NAMES: linkding
+```
+
+Hal ini menunjukkan bahwa container Linkding berhasil berjalan.
+
+## 4. Akses Linkding
+
+Linkding diakses melalui browser menggunakan alamat:
+
+```text
+http://172.17.77.48:9090
+```
+
+Aplikasi berhasil dibuka melalui browser.
+
+## 5. Login
+
+Akun pengguna dibuat menggunakan perintah:
+
+```bash
+sudo docker compose exec linkding python manage.py createsuperuser
+```
+
+Setelah akun dibuat, pengguna dapat login ke aplikasi Linkding.
+
+## 6. Pengisian Konten
+
+Setelah berhasil login, dilakukan penambahan bookmark menggunakan fitur **Add bookmark**.
+
+Bookmark yang ditambahkan:
+
+- Title: GitHub
+- Tag: programming
+- Tag: referensi
+
+Bookmark berhasil muncul pada halaman **Bookmarks**.
+
+## 7. Hasil Instalasi
+
+Hasil instalasi menunjukkan bahwa:
+
+- Docker berhasil berjalan pada VM.
+- Linkding berhasil diinstal menggunakan Docker Compose.
+- Container Linkding berstatus `Up (healthy)`.
+- Linkding dapat diakses melalui browser.
+- Pengguna dapat login.
+- Bookmark berhasil ditambahkan.
+- Tag berhasil digunakan.
+
+## 8. Troubleshooting
+
+Saat menjalankan:
+
+```bash
+docker compose up -d
+```
+
+muncul error:
+
+```text
+permission denied while trying to connect to the Docker API
+```
+
+Masalah tersebut diatasi dengan menjalankan:
+
+```bash
+sudo docker compose up -d
+```
+
+Setelah menggunakan `sudo`, Linkding berhasil dijalankan.
