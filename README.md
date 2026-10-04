@@ -129,6 +129,8 @@ Hasil menunjukkan:
 Active: active (running)
 ```
 
+![Status Docker](Screenshots/01-docker-status.png)
+
 Hal tersebut menunjukkan bahwa service Docker berhasil berjalan.
 
 Versi Docker dapat diperiksa dengan:
@@ -199,6 +201,8 @@ Network linkding_default Created
 Container linkding Started
 ```
 
+![Docker Compose](Screenshots/02-docker-compose.png)
+
 ### 8. Mengecek container
 
 Container kemudian diperiksa menggunakan:
@@ -215,7 +219,7 @@ PORTS: 0.0.0.0:9090->9090/tcp
 NAMES: linkding
 ```
 
-![Container Linkding Berjalan](dokumentasi/images/03-linkding-container.png)
+![Container Linkding Berjalan](Screenshots/03-linkding-container.png)
 
 Status `Up (healthy)` menunjukkan bahwa container Linkding berhasil berjalan dan health check aplikasi berhasil.
 
@@ -247,7 +251,7 @@ http://172.17.77.48:9090
 
 Hasil akses aplikasi ditunjukkan pada gambar berikut:
 
-![Dashboard Linkding](dokumentasi/images/04-linkding-dashboard.png)
+![Dashboard Linkding](Screenshots/04-linkding-dashboard.png)
 
 ---
 
@@ -364,8 +368,6 @@ sudo docker compose up -d
 
 Script tersebut dapat digunakan untuk menjalankan container Linkding tanpa harus mengetik seluruh perintah secara manual.
 
-Docker Compose juga dapat menggunakan konfigurasi restart agar container dapat dijalankan kembali setelah service Docker aktif, selama container tidak dihentikan secara manual.
-
 ---
 
 # Cara Pemakaian
@@ -395,7 +397,7 @@ Pada halaman ini terdapat:
 - Menu **Settings**
 - Menu **Logout**
 
-![Dashboard Linkding](dokumentasi/images/04-linkding-dashboard.png)
+![Dashboard Linkding](Screenshots/04-linkding-dashboard.png)
 
 ## 3. Menambahkan Bookmark
 
@@ -432,7 +434,7 @@ Dengan menggunakan tag, bookmark dapat dicari dan dikelompokkan dengan lebih mud
 
 Setelah bookmark ditambahkan, hasilnya dapat dilihat pada halaman Bookmarks.
 
-![Daftar Bookmark Linkding](dokumentasi/images/05-linkding-bookmarks.png)
+![Daftar Bookmark Linkding](Screenshots/05-linkding-bookmarks.png)
 
 Pada halaman tersebut pengguna dapat melakukan beberapa tindakan seperti:
 
@@ -521,7 +523,7 @@ Beberapa kekurangan yang ditemukan:
 - Instalasi self-hosted membutuhkan pengetahuan dasar mengenai Linux dan Docker.
 - Tampilan antarmuka cukup minimal.
 - Fitur kolaborasi tidak menjadi fokus utama.
-- Pada instalasi project ini, aplikasi hanya dapat diakses melalui IP VM lokal.
+- Pada project ini, aplikasi hanya dapat diakses melalui IP VM lokal.
 - Belum menggunakan domain dan reverse proxy sehingga belum menggunakan akses yang lebih sesuai untuk deployment publik.
 
 ## Perbandingan dengan Linkwarden
@@ -559,28 +561,25 @@ Sementara itu, Linkwarden lebih sesuai untuk pengguna yang membutuhkan pengarsip
 
 # Referensi
 
-1. Linkding. **Installation**.  
+1. Linkding - Installation  
    https://linkding.link/installation/
 
-2. Linkding. **Options**.  
+2. Linkding - Options  
    https://linkding.link/options/
 
-3. Linkding. **Backups**.  
+3. Linkding - Backups  
    https://linkding.link/backups/
 
-4. Linkding. **API**.  
+4. Linkding - API  
    https://linkding.link/api/
 
-5. Linkding. **Official GitHub Repository**.  
+5. Linkding - Official GitHub Repository  
    https://github.com/sissbruecker/linkding
 
-6. Linkwarden. **Documentation - Overview**.  
-   https://docs.linkwarden.app/usage/overview
+6. Linkwarden - Documentation  
+   https://docs.linkwarden.app/
 
-7. Linkwarden. **Documentation - Links**.  
-   https://docs.linkwarden.app/usage/links
+7. Template Laporan Project Akhir KDJK.
 
-8. Template Laporan Project Akhir KDJK.
-
-9. Contoh laporan tahun sebelumnya - OneStyd/PrestaShop.  
+8. Contoh laporan tahun sebelumnya - OneStyd/PrestaShop  
    https://github.com/OneStyd/prestashop
