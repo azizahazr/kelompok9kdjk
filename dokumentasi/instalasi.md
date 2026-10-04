@@ -108,7 +108,8 @@ STATUS: Up (healthy)
 PORTS: 0.0.0.0:9090->9090/tcp
 NAMES: linkding
 ```
-
+```markdown
+![Container Linkding Berjalan](images/03-linkding-container.png)
 Hal ini menunjukkan bahwa container Linkding berhasil berjalan.
 
 ## 4. Akses Linkding
