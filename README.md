@@ -6,7 +6,7 @@
  Mirabel Nasywa Rajendraputri (M0403241067),
  Muhammad Riady Hendrawan (M0403241103),
  Muhammad Fauzan Rizvi (M0403241142),
- Dini Aulia Wulandari (M0403241143),
+ Dini Aulia Wulandari (M0403241143)
 
 ## Deskripsi
 
