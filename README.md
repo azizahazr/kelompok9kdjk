@@ -185,8 +185,6 @@ Buat akun Administrator (*Superuser*) untuk masuk ke dalam aplikasi `linkding`:
 sudo docker compose exec linkding python manage.py createsuperuser
 ```
 
-*(Sistem akan meminta input berupa username, email, dan password untuk login)*.
-
 ### 11. Mengakses Aplikasi via Internet
 
 Aplikasi web `linkding` kini berjalan di VPS publik dan dapat diakses dari mana saja melalui web browser menggunakan URL:
