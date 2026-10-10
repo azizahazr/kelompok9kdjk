@@ -25,7 +25,7 @@
 
 # Sekilas Tentang
 
-Linkding adalah aplikasi web self-hosted yang digunakan untuk menyimpan dan mengelola bookmark atau URL secara mandiri. Aplikasi ini berfokus pada pengelolaan bookmark dengan antarmuka yang sederhana dan ringan.
+Linkding merupakan aplikasi web self-hosted yang digunakan untuk menyimpan dan mengelola bookmark atau URL secara mandiri. Aplikasi ini berfokus pada pengelolaan bookmark dengan antarmuka yang sederhana dan ringan.
 
 Linkding memungkinkan pengguna menyimpan bookmark, memberikan tag, melakukan pencarian, menambahkan catatan, serta mengelola bookmark yang telah disimpan. Selain itu, Linkding menyediakan fitur import dan export bookmark, REST API, browser extension, serta dukungan multi-user.
 
