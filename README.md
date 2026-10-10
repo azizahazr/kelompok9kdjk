@@ -40,240 +40,176 @@ Pada project ini, Linkding dipilih sebagai aplikasi web self-hosted untuk diinst
 ## Kebutuhan Sistem
 
 Sebelum melakukan instalasi Linkding, diperlukan:
-
-- VM lokal
-- Sistem operasi Ubuntu
+- Cloud VPS dengan spesifikasi 1 vCPU, 1 GB RAM, 20 GB Storage
+- Sistem operasi Ubuntu 24.04 LTS
 - Koneksi internet
-- Docker
-- Docker Compose
+- Docker & Docker Compose
 - Web browser
 
 Pada pengujian project ini digunakan:
-
-- Username VM: `asus`
-- IP Address VM: `172.17.77.48`
+- Hostname VPS: `linkding-vps.kelompok9kdjk.com`
+- IP Address Publik VPS: `103.67.244.155`
 - Port aplikasi: `9090`
 
 ## Proses Instalasi
 
-### 1. Memperbarui repository Ubuntu
+### 1. Login ke Server VPS
 
-Pertama dilakukan pembaruan repository Ubuntu:
+Akses terminal atau Command Prompt pada perangkat lokal, kemudian jalankan perintah SSH berikut untuk masuk ke server VPS:
+
+```bash
+ssh root@103.67.244.155
+```
+
+*(Catatan: Masukkan password VPS saat diminta. Demi keamanan, password tidak dicantumkan di laporan ini).*
+
+### 2. Memperbarui Repository Ubuntu
+
+Lakukan pembaruan repository sistem Ubuntu di VPS:
 
 ```bash
 sudo apt update
 ```
 
-### 2. Menginstal kebutuhan Docker
+### 3. Menginstal Kebutuhan Docker
 
-Menginstal paket yang diperlukan:
+Instal paket dasar yang diperlukan untuk mengunduh repository Docker:
 
 ```bash
 sudo apt install ca-certificates curl
 ```
 
-Kemudian membuat direktori keyrings:
+Buat direktori keyrings untuk menyimpan kunci keamanan:
 
 ```bash
 sudo install -m 0755 -d /etc/apt/keyrings
 ```
 
-Mengunduh GPG key Docker:
+Unduh GPG key resmi Docker:
 
 ```bash
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 ```
 
-Memberikan permission:
+Beri izin baca pada file GPG key tersebut:
 
 ```bash
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
 
-Menambahkan repository Docker:
+Tambahkan repository Docker ke dalam sistem Ubuntu:
 
 ```bash
-sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-Types: deb
-URIs: https://download.docker.com/linux/ubuntu
-Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
-Components: stable
-Architectures: $(dpkg --print-architecture)
-Signed-By: /etc/apt/keyrings/docker.asc
-EOF
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-Kemudian dilakukan update repository kembali:
+Perbarui kembali daftar repository agar paket Docker dikenali:
 
 ```bash
 sudo apt update
 ```
 
-### 3. Menginstal Docker dan Docker Compose
+### 4. Menginstal Docker dan Docker Compose
 
-Docker dan Docker Compose diinstal menggunakan:
+Jalankan perintah instalasi Docker Engine dan Docker Compose:
 
 ```bash
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-Setelah instalasi selesai, status Docker diperiksa:
+Verifikasi apakah layanan Docker sudah berhasil berjalan:
 
 ```bash
 sudo systemctl status docker
 ```
 
-Hasil menunjukkan:
+Jika instalasi berhasil, output akan menunjukkan status `Active: active (running)`.
 
-```text
-Active: active (running)
-```
+### 5. Membuat Direktori Linkding
 
-![Status Docker](Screenshots/01-docker-status.png)
-
-Hal tersebut menunjukkan bahwa service Docker berhasil berjalan.
-
-Versi Docker dapat diperiksa dengan:
-
-```bash
-docker --version
-```
-
-Sedangkan versi Docker Compose dapat diperiksa dengan:
-
-```bash
-docker compose version
-```
-
-### 4. Membuat direktori Linkding
-
-Membuat direktori untuk menyimpan konfigurasi Linkding:
+Buat direktori baru khusus untuk menyimpan file konfigurasi `linkding` dan masuk ke direktori tersebut:
 
 ```bash
 mkdir -p ~/linkding
 cd ~/linkding
 ```
 
-### 5. Mengunduh file Docker Compose
+### 6. Mengunduh Konfigurasi Docker Compose
 
-File Docker Compose Linkding diunduh menggunakan:
+Unduh file `docker-compose.yml` bawaan dari repository resmi `linkding`:
 
 ```bash
 wget https://raw.githubusercontent.com/sissbruecker/linkding/master/docker-compose.yml
 ```
 
-### 6. Mengunduh file environment
+### 7. Mengatur File Environment
 
-File environment diunduh menggunakan:
+Unduh file contoh *environment* (`.env.sample`):
 
 ```bash
 wget https://raw.githubusercontent.com/sissbruecker/linkding/master/.env.sample
 ```
 
-Kemudian dibuat file `.env`:
+Salin file contoh tersebut agar menjadi file konfigurasi `.env` yang aktif:
 
 ```bash
 cp .env.sample .env
 ```
 
-Struktur file menjadi:
+### 8. Menjalankan Linkding
 
-```text
-linkding/
-├── .env
-├── .env.sample
-└── docker-compose.yml
-```
-
-### 7. Menjalankan Linkding
-
-Linkding dijalankan menggunakan Docker Compose:
+Jalankan container Docker `linkding` sebagai proses latar belakang (*detached mode*):
 
 ```bash
 sudo docker compose up -d
 ```
 
-Proses menghasilkan:
+### 9. Mengecek Status Container
 
-```text
-Image sissbruecker/linkding:latest Pulled
-Network linkding_default Created
-Container linkding Started
-```
-
-![Docker Compose](Screenshots/02-docker-compose.png)
-
-### 8. Mengecek container
-
-Container kemudian diperiksa menggunakan:
+Periksa apakah container berjalan normal tanpa ada error:
 
 ```bash
 sudo docker ps
 ```
 
-Hasil pengujian:
+Status container akan menunjukkan `Up (healthy)` untuk aplikasi `linkding` pada port `9090`.
 
-```text
-STATUS: Up (healthy)
-PORTS: 0.0.0.0:9090->9090/tcp
-NAMES: linkding
-```
+### 10. Membuat Akun Pengguna
 
-![Container Linkding Berjalan](Screenshots/03-linkding-container.png)
-
-Status `Up (healthy)` menunjukkan bahwa container Linkding berhasil berjalan dan health check aplikasi berhasil.
-
-### 9. Membuat akun pengguna
-
-Setelah container berjalan, dibuat akun pengguna karena instalasi Linkding tidak menyediakan initial user secara otomatis.
-
-Perintah yang digunakan:
+Buat akun Administrator (*Superuser*) untuk masuk ke dalam aplikasi `linkding`:
 
 ```bash
 sudo docker compose exec linkding python manage.py createsuperuser
 ```
 
-Kemudian dimasukkan username, email, dan password.
+*(Sistem akan meminta input berupa username, email, dan password untuk login)*.
 
-### 10. Mengakses Linkding
+### 11. Mengakses Aplikasi via Internet
 
-IP VM yang digunakan pada pengujian:
-
-```text
-172.17.77.48
-```
-
-Aplikasi kemudian dapat diakses melalui:
+Aplikasi web `linkding` kini berjalan di VPS publik dan dapat diakses dari mana saja melalui web browser menggunakan URL:
 
 ```text
-http://172.17.77.48:9090
+http://103.67.244.155:9090
 ```
-
-Hasil akses aplikasi ditunjukkan pada gambar berikut:
-
-![Dashboard Linkding](Screenshots/04-linkding-dashboard.png)
 
 ---
 
 # Konfigurasi
 
-Konfigurasi Linkding dilakukan menggunakan file `.env` yang dibuat dari file `.env.sample`.
+Konfigurasi parameter aplikasi Linkding dilakukan menggunakan file `.env` yang berada di dalam direktori `~/linkding` di server VPS.
 
-Pada project ini digunakan konfigurasi dasar dengan port aplikasi `9090`.
+Pada project ini, digunakan konfigurasi standar dengan pemetaan *port* `9090` dari sisi host (VPS) ke container Docker. Karena aplikasi ini dideploy secara publik menggunakan Cloud VPS, port `9090` pada jaringan eksternal VPS telah dibuka sehingga aplikasi bisa diakses secara langsung tanpa memerlukan konfigurasi domain maupun *reverse proxy* tambahan.
 
-Port tersebut dipetakan dari host ke container sehingga aplikasi dapat diakses melalui:
+Aplikasi web dapat diakses pada URL:
 
 ```text
-http://172.17.77.48:9090
+http://103.67.244.155:9090
 ```
 
-Linkding menggunakan SQLite sebagai database secara default. Data aplikasi disimpan pada direktori data yang dimount ke dalam container.
-
-Pada project ini tidak digunakan domain, HTTPS, atau reverse proxy karena aplikasi digunakan untuk pengujian pada VM lokal.
-
-Linkding juga menyediakan berbagai opsi konfigurasi melalui environment variable yang dapat dimasukkan ke dalam file `.env`.
-
----
+Linkding berjalan dengan sangat ringan menggunakan database bawaan SQLite. Agar data *bookmark* dan pengaturan tidak hilang saat container *restart* atau dihentikan, direktori penyimpanan data telah di-*mount* dari sistem *host* VPS ke dalam *volume* container. Konfigurasi ini menjamin persistensi data pengguna untuk penggunaan jangka panjang.
 
 # Maintenance
 
