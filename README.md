@@ -1,4 +1,4 @@
-# Project KDJK - Implementasi Linkding
+# Project KDJK: Implementasi Linkding
 
 ## Anggota Kelompok
 
