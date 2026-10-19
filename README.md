@@ -313,7 +313,7 @@ Cara pemakaian Linkding cukup sederhana karena fungsi utama aplikasi berfokus pa
 Buka web browser kemudian akses:
 
 ```text
-http://172.17.77.48:9090
+https://bit.ly/47QguD2
 ```
 
 Login dilakukan menggunakan akun yang telah dibuat pada proses instalasi.
@@ -397,6 +397,8 @@ atau:
 ```text
 #referensi
 ```
+
+![Search Bookmark](Screenshots/07-linkding-search-bookmark.png)
 
 ## 7. Mengedit Bookmark
 
