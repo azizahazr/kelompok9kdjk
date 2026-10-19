@@ -1,3 +1,8 @@
+
+<div align="center">
+  <img src="https://github.com/sissbruecker/linkding/raw/master/assets/header.svg" alt="Linkding" width="500">
+</div>
+
 # Project KDJK: Implementasi Linkding
 
 ## Anggota Kelompok
