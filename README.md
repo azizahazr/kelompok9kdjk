@@ -351,7 +351,7 @@ Tags  : programming, referensi
 
 Setelah disimpan, bookmark akan muncul pada halaman Bookmarks.
 
-![Add Bookmark](Screenshots/06-linkding-addbookmark.png)
+![Add Bookmark](Screenshots/06-addbookmark.png)
 
 ## 4. Menggunakan Tag
 
